@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events - Coding Club</title>
+  <link rel="stylesheet" href="./eventscss.css">
+</head>
+<body>
+  <div>
+    <video autoplay loop muted playsinline id="bgvideo">
+      <source src="/assests/video/bg1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-triangle"></div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./events.html" class="active">Events</a></li>
+        <li><a href="./members.html">Members</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#join">Join Us</a></li>
+        <li><a href="#links">Links</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <!-- Upcoming Events -->
+    <section class="events-section">
+      <h2 class="section-title">Upcoming Events</h2>
+
+      <div class="event-card">
+        <div class="event-image">
+          <img src="./assests/image/devsprint.png" alt="DevSprint">
+        </div>
+        <div class="event-details">
+          <span class="event-number">01</span>
+          <h3>DevSprint</h3>
+          <p class="event-date">January 18th, 2025</p>
+          <p class="event-desc">
+            An exciting, fast-paced web development competition to create
+            entertaining websites that captivate users. Whether you’re a frontend wizard
+            or a backend guru, there’s a track for you!
+          </p>
+          <a href="#" class="event-link">Know More →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Past Events -->
+    <section class="events-section">
+      <h2 class="section-title">Past Events</h2>
+
+      <div class="event-card">
+        <div class="event-details">
+          <span class="event-number">02</span>
+          <h3>CaptureTheGeese</h3>
+          <p class="event-date">December 27th, 2024</p>
+          <p class="event-desc">
+            Get ready for a fun-filled coding chase where participants capture
+            flags in the form of geese! A cybersecurity twist with puzzles,
+            challenges, and teamwork.
+          </p>
+          <a href="#" class="event-link">Know More →</a>
+        </div>
+        <div class="event-image">
+          <img src="./assests/image/capturethegeese.png" alt="Capture The Geese">
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
