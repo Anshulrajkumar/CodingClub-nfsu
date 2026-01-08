@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Event - Coding Club</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    #bgvideo {
+      opacity: 0.5;
+      position: fixed;
+      z-index: -1;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      width: 60px;
+      height: 60px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ff0000;
+    }
+
+    .main-content {
+      margin-top: 80px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .event-hero {
+      background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(56, 142, 60, 0.9));
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .event-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-hero .event-date {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+    }
+
+    .event-hero .event-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      margin-top: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .event-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 3rem;
+      color: #000;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      margin-bottom: 3rem;
+    }
+
+    .event-image-section img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .event-image-section img:hover {
+      transform: scale(1.05);
+    }
+
+    .event-details-section h2 {
+      font-size: 2.2rem;
+      color: #2e7d32;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .event-details-section p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .highlights {
+      background: #f5f5f5;
+      border-left: 5px solid #2e7d32;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .highlights h3 {
+      color: #2e7d32;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .highlights ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .highlights li {
+      padding: 0.7rem 0;
+      color: #333;
+      font-weight: 500;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .highlights li:last-child {
+      border-bottom: none;
+    }
+
+    .highlights li:before {
+      content: "✓ ";
+      color: #2e7d32;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-box {
+      background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(56, 142, 60, 0.2));
+      border: 2px solid #2e7d32;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #2e7d32;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #555;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #2e7d32, #1b5e20);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    }
+
+    .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46, 125, 50, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .event-container {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+
+      .event-hero h1 {
+        font-size: 2rem;
+      }
+
+      .event-details-section h2 {
+        font-size: 1.7rem;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-menu {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <video autoplay loop muted playsinline id="bgvideo">
+      <source src="/assests/video/bg1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./assests/image/logo.png">
+      </div>
+      <ul class="nav-menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./events.html" class="active">Events</a></li>
+        <li><a href="./members.html">Members</a></li>
+        <li><a href="./underdev.html">FAQs</a></li>
+        <li><a href="./underdev.html">Join Us</a></li>
+        <li><a href="./underdev.html">Links</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="event-hero">
+      <h1>Basic Python Programming</h1>
+      <p class="event-date">August 22, 2025</p>
+      <span class="event-badge">Structured 2-Month Course</span>
+    </div>
+
+    <div class="event-container">
+      <div class="event-image-section">
+        <img src="./assests/image/e2.jpeg" alt="Python Course - Students Learning">
+      </div>
+
+      <div class="event-details-section">
+        <h2>Course Overview</h2>
+        <p>
+          The Coding Club successfully organized a comprehensive two-month structured course on Basic Python Programming. 
+          This foundational program was designed to introduce students to the world of programming through Python, 
+          one of the most beginner-friendly and widely-used programming languages in the industry.
+        </p>
+
+        <div class="stats">
+          <div class="stat-box">
+            <div class="stat-number">33</div>
+            <div class="stat-label">Students Participated</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Months Duration</div>
+          </div>
+        </div>
+
+        <div class="highlights">
+          <h3>Course Highlights</h3>
+          <ul>
+            <li>Fundamentals of Python Programming</li>
+            <li>Introduction by Coding Club Vice-President</li>
+            <li>Hands-on practical sessions</li>
+            <li>Interactive learning environment</li>
+            <li>Structured curriculum covering core concepts</li>
+            <li>Beginner-friendly approach for newcomers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: rgba(255, 255, 255, 0.95); color: #000; padding: 2.5rem 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
+      <h2 style="font-size: 1.8rem; color: #2e7d32; margin-bottom: 1.5rem;">Event Details</h2>
+      <p style="font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.8; color: #333;">
+        On the inaugural day, a total of <strong>33 students</strong> attended the session, 
+        where the fundamentals of Python were introduced and explained comprehensively by the <strong>Vice-President of the Coding Club</strong>. 
+        The course was structured to provide a solid foundation in Python programming, making it accessible to students of all backgrounds 
+        and experience levels.
+      </p>
+      <p style="font-size: 1.05rem; line-height: 1.8; color: #333;">
+        This initiative by the Coding Club demonstrates the commitment to nurturing technical talent and fostering a culture of continuous learning 
+        among the student community. The Python course served as an excellent stepping stone for students interested in pursuing programming and 
+        software development as a career path.
+      </p>
+    </div>
+  </main>
+</body>
+</html>
