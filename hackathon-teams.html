@@ -103,6 +103,36 @@
     .back-button:hover {
       background-color: #5a67d8;
     }
+
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .status-eligible {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .status-disqualified {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .problem-statement {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-left: 4px solid #667eea;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #333;
+      line-height: 1.5;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -131,7 +161,7 @@
   <main class="main-content">
     <div class="teams-container">
       <h1 class="page-title">NFSU SMART Hackathon 2026</h1>
-      <p class="page-subtitle">Registered Eligible Teams</p>
+      <p class="page-subtitle">Registered Teams - Eligible & Disqualified Status</p>
 
       <div class="teams-grid">
         <!-- Team 1 -->
@@ -142,6 +172,8 @@
           <p><span class="team-value">Antar Majumder</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Vedansh Saxena, Ajay pal Singh, Prasunma Das, Rupangshu Yadav</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> Students lack a centralized, secure, and user‑friendly platform to report and recover lost items on campus.</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 2 -->
@@ -152,6 +184,8 @@
           <p><span class="team-value">Ramen Debbarma</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Avik das</span></p>
+          <div class="problem-statement"><span class="team-label">Status:</span> No problem statement submitted</div>
+          <p style="margin-top: 8px; color: #f44336; font-weight: bold;">✗ Not Eligible</p>
         </div>
 
         <!-- Team 3 -->
@@ -162,6 +196,8 @@
           <p><span class="team-value">K.V.N Srinitya</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Anushka Selvarasu, Anasingaraju Tanmayee, Debasmita Karmakar, Disha Chowdhury</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> A Modular Smart Campus Platform for Integrated Student Support</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 4 -->
@@ -172,6 +208,8 @@
           <p><span class="team-value">Priyanshu Bhagat</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Nandan Das, Abhineet T, Dwaipayan Debberma</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> Students lack a unified, real-time platform to manage campus logistics, leading to significant inefficiencies in hostel accommodation, meal planning, academic schedules and resource accessibility.</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 5 -->
@@ -182,6 +220,8 @@
           <p><span class="team-value">Saniya Khatri</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Pratyay Mukherjee, Mohit Yadav</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> The existing college printing setup depends on manually managing emails, printing done by people, and using handwritten logs, which leads to delays, inefficiency, and extra work for the staff.</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 6 -->
@@ -192,6 +232,8 @@
           <p><span class="team-value">Chinmay dutta</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Gourav Nag, Joy Kumar Ghosh</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> To streamline campus canteen operations by reducing service delays and queues, improving food availability information, simplifying payments, and enabling structured student feedback and issue resolution through a smart digital platform.</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 7 -->
@@ -202,6 +244,8 @@
           <p><span class="team-value">Rounak Kundu</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Anindya Bhar, Priyanshu Paul, Reejit Maji, Anurag Debnath</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> The absence of a centralized and dependable place for institution-specific academic resources results in scattered preparation and wasted time for students.</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 8 -->
@@ -212,6 +256,8 @@
           <p><span class="team-value">Om Prakash</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Raju Ranjan, Ankit, Sidhant Singh Gaur, Rajat P</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> Grievances portal</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 9 -->
@@ -222,6 +268,8 @@
           <p><span class="team-value">Himanshu Yadav</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Gaurav Raj, Umesh Gupta, Aakash M</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> Absence of a centralized and organized Previous Year Question (PYQ) website for NFSU Tripura Campus students for semester-wise exam preparation</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 10 -->
@@ -232,6 +280,8 @@
           <p><span class="team-value">Olivia Dasgupta</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Mergin Reja M</span></p>
+          <div class="problem-statement"><span class="team-label">Status:</span> No problem statement submitted</div>
+          <p style="margin-top: 8px; color: #f44336; font-weight: bold;">✗ Not Eligible</p>
         </div>
 
         <!-- Team 11 -->
@@ -242,6 +292,8 @@
           <p><span class="team-value">Prakash Deb Roy</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Parag Sarawgi, Naimish Peddada</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> Increasing and Managing canteen queue efficienctly</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
 
         <!-- Team 12 -->
@@ -252,6 +304,8 @@
           <p><span class="team-value">Sunneel debbarma</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Sumit kundu, Debojit malakar, Divya megha, Aakarshan kumar</span></p>
+          <div class="problem-statement"><span class="team-label">Status:</span> No problem statement submitted</div>
+          <p style="margin-top: 8px; color: #f44336; font-weight: bold;">✗ Not Eligible</p>
         </div>
 
         <!-- Team 13 -->
@@ -262,6 +316,8 @@
           <p><span class="team-value">Arghya Sarkar</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Akash Bhuin, Angshuman Mandal, Arpan Mandal</span></p>
+          <div class="problem-statement"><span class="team-label">Status:</span> No problem statement submitted</div>
+          <p style="margin-top: 8px; color: #f44336; font-weight: bold;">✗ Not Eligible</p>
         </div>
 
         <!-- Team 14 -->
@@ -272,6 +328,8 @@
           <p><span class="team-value">Vanshika Garg</span></p>
           <p><span class="team-label">Team Members:</span></p>
           <p><span class="team-value">Simran Das, Ritik Bhol, Piyush Kumar</span></p>
+          <div class="problem-statement"><span class="team-label">Problem Statement:</span> Proxy in colleges</div>
+          <p style="margin-top: 8px; color: #4caf50; font-weight: bold;">✓ Eligible</p>
         </div>
       </div>
     </div>
