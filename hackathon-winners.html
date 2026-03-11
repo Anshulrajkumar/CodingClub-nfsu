@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon Winners - Coding Club</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    #bgvideo {
+      opacity: 0.5;
+      position: fixed;
+      z-index: -1;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      width: 60px;
+      height: 60px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #df3434;
+    }
+
+    .main-content {
+      margin-top: 80px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .event-hero {
+      background: transparent;
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .event-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-hero .event-date {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+    }
+
+    .event-hero .event-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      margin-top: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .winners-section {
+      background: rgba(0, 0, 0, 0.418);
+      backdrop-filter: blur(2px);
+      color: #e0e0e0;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(255, 255, 255, 0.4);
+    }
+
+    .winners-section h2 {
+      font-size: 2rem;
+      color: #ff6b6b;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-weight: 700;
+    }
+
+    .winners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .winner-card {
+      text-align: center;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      border: 3px solid transparent;
+      padding: 1.5rem;
+    }
+
+    .winner-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .winner-card.first {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 193, 7, 0.08));
+      border-color: rgba(255, 215, 0, 0.5);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.15);
+    }
+
+    .winner-card.second {
+      background: linear-gradient(135deg, rgba(192, 192, 192, 0.12), rgba(158, 158, 158, 0.08));
+      border-color: rgba(192, 192, 192, 0.5);
+      box-shadow: 0 8px 25px rgba(192, 192, 192, 0.15);
+    }
+
+    .winner-card.third {
+      background: linear-gradient(135deg, rgba(205, 127, 50, 0.12), rgba(183, 110, 42, 0.08));
+      border-color: rgba(205, 127, 50, 0.5);
+      box-shadow: 0 8px 25px rgba(205, 127, 50, 0.15);
+    }
+
+    .winner-card .trophy {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .winner-card .place {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #e0e0e0;
+    }
+
+    .winner-card img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      margin-bottom: 1rem;
+    }
+
+    .winner-card .team-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .winner-card .team-members {
+      font-size: 0.85rem;
+      color: #c4c3c3;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .winner-card .semester {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+
+    .winner-card .prize {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ff6b6b;
+      margin-bottom: 0.4rem;
+    }
+
+    .winner-detail {
+      background: rgba(14, 0, 0, 0.363);
+      backdrop-filter: blur(2px);
+      color: #e0e0e0;
+      border: 7px solid rgb(216, 20, 20);
+      border-radius: 20px;
+      padding: 2.5rem 3rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 40px rgba(252, 0, 0, 0.384);
+    }
+
+    .winner-detail h3 {
+      font-size: 1.6rem;
+      color: #ff6b6b;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .winner-detail .detail-subtitle {
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    .winner-detail .detail-members {
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .winner-detail .project-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      margin-bottom: 0.5rem;
+    }
+
+    .winner-detail .project-desc {
+      font-size: 0.95rem;
+      color: #bbb;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .winner-detail .project-link {
+      display: inline-block;
+      color: #5cb8ff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      word-break: break-all;
+    }
+
+    .winner-detail .project-link:hover {
+      color: #8dcfff;
+      text-decoration: underline;
+    }
+
+    .winner-detail .appreciation {
+      background: #fff3e0;
+      border-left: 4px solid #d32f2f;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .winner-detail .prize-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #d32f2f, #b71c1c);
+      color: #fff;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .detail-header .detail-trophy {
+      font-size: 2rem;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #d32f2f, #b71c1c);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+    }
+
+    .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(211, 47, 47, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .winners-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .event-hero h1 {
+        font-size: 2rem;
+      }
+
+      .nav-menu {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .winners-section {
+        padding: 2rem;
+      }
+    }
+
+    /* Confetti */
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      top: -10px;
+      opacity: 0;
+      animation: confetti-fall linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotateZ(0deg) rotateX(0deg);
+      }
+      75% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotateZ(720deg) rotateX(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <video autoplay loop muted playsinline id="bgvideo">
+      <source src="/assests/video/bg1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./assests/image/logo.png">
+      </div>
+      <ul class="nav-menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./events.html" class="active">Events</a></li>
+        <li><a href="./members.html">Members</a></li>
+        <li><a href="./underdev.html">FAQs</a></li>
+        <li><a href="./underdev.html">Join Us</a></li>
+        <li><a href="./underdev.html">Links</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="event-hero">
+      <h1>NFSU SMART HACKATHON</h1>
+      <p class="event-date">February 27th, 2026</p>
+      <span class="event-badge">Winners Announcement</span>
+    </div>
+
+    <section class="winners-section">
+      <h2>Hackathon Winners</h2>
+      <div class="winners-grid">
+        <div class="winner-card first">
+          <div class="trophy">🏆</div>
+          <div class="place">1st Place</div>
+          <img src="./assests/image/winners/1st.jpg" alt="Team Tech Naari">
+          <div class="team-name">Team Tech Naari</div>
+          <div class="team-members">Debasmita, Srinitya, Tanmayee, Disha</div>
+          <div class="semester">B.Tech–M.Tech Sem 4</div>
+          <div class="prize">₹5,000</div>
+        </div>
+        <div class="winner-card second">
+          <div class="trophy">🥈</div>
+          <div class="place">2nd Place</div>
+          <img src="./assests/image/winners/2nd.jpg" alt="Team Byte Force">
+          <div class="team-name">Team Byte Force</div>
+          <div class="team-members">Siddhant, Raju, Om Prakash, Ankit, Rajat</div>
+          <div class="semester">B.Tech–M.Tech Sem 2</div>
+          <div class="prize">₹3,000</div>
+        </div>
+        <div class="winner-card third">
+          <div class="trophy">🥉</div>
+          <div class="place">3rd Place</div>
+          <img src="./assests/image/winners/3rd.jpg" alt="Team The Trio">
+          <div class="team-name">Team The Trio</div>
+          <div class="team-members">Pratyay, Saniya, Mohit</div>
+          <div class="semester">B.Sc–M.Sc Sem 6</div>
+          <div class="prize">₹2,000</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1st Place Detail -->
+    <section class="winner-detail">
+      <div class="detail-header">
+        <span class="detail-trophy">🏆</span>
+        <div>
+          <h3>Team Tech Naari — 1st Place</h3>
+          <p class="detail-subtitle">Debasmita Karmakar, KVN Srinitya, Tanmayee Anasingaraju, Disha Chowdhary &bull; B.Tech–M.Tech Semester 4</p>
+        </div>
+      </div>
+      <p class="project-name">Project: Campus Whispers</p>
+      <p class="project-desc">
+        Campus Whispers is a secure role-based campus management and student support portal developed specifically for 
+        National Forensic Sciences University, Tripura Campus. The platform operates through a whitelist-based login system, 
+        allowing access only to approved email IDs via Google Sign-In authentication, ensuring a controlled and secure environment.
+      </p>
+      <a href="https://campus-whispers-eta.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer">campus-whispers-eta.vercel.app ↗</a>
+    </section>
+
+    <!-- 2nd Place Detail -->
+    <section class="winner-detail">
+      <div class="detail-header">
+        <span class="detail-trophy">🥈</span>
+        <div>
+          <h3>Team Byte Force — 2nd Place</h3>
+          <p class="detail-subtitle">Siddhant Singh Gaur, Raju Ranjan, Om Prakash, Ankit, Rajat P. &bull; B.Tech–M.Tech Semester 2</p>
+        </div>
+      </div>
+      <p class="project-name">Project: Campus Grievance Portal</p>
+      <p class="project-desc">
+        The team proposed a centralised grievance portal where students, faculty, and staff of NFSU TC can submit their 
+        concerns, suggestions, or issues. The platform aims to streamline communication and improve the grievance resolution process.
+      </p>
+      <a href="https://github.com/OmPrakash2412/Grievance_NFSU_Portal" class="project-link" target="_blank" rel="noopener noreferrer">github.com/OmPrakash2412/Grievance_NFSU_Portal ↗</a>
+    </section>
+
+    <!-- 3rd Place Detail -->
+    <section class="winner-detail">
+      <div class="detail-header">
+        <span class="detail-trophy">🥉</span>
+        <div>
+          <h3>Team The Trio — 3rd Place</h3>
+          <p class="detail-subtitle">Pratyay Mukherji, Saniya Khatri, Mohit Yadav &bull; B.Sc–M.Sc Semester 6</p>
+        </div>
+      </div>
+      <p class="project-name">Project: Automated Campus Printing System (SPARK)</p>
+      <p class="project-desc">
+        Self-service Print Automation and Record-Keeping (SPARK) is an open-source campus printing system that eliminates 
+        manual requests and disorganized queues. Students upload a document, complete a UPI payment, and receive a token — 
+        jobs are then auto-processed in order and sent directly to the printer. Admins monitor all activity in real time 
+        via a centralized dashboard, keeping campus printing transparent and efficient.
+      </p>
+      <a href="https://github.com/distortedteen/spark-print-automation" class="project-link" target="_blank" rel="noopener noreferrer">github.com/distortedteen/spark-print-automation ↗</a>
+    </section>
+
+    <a href="./events.html" class="back-button">← Back to Events</a>
+  </main>
+
+  <div class="confetti-container" id="confetti"></div>
+  <script>
+    (function() {
+      const container = document.getElementById('confetti');
+      const colors = ['#ff6b6b','#ffd700','#5cb8ff','#ff4081','#69f0ae','#ba68c8','#ffab40','#40c4ff','#ff5252','#b2ff59'];
+      const shapes = ['square','rect','circle'];
+      const count = 120;
+
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement('div');
+        el.classList.add('confetti');
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const shape = shapes[Math.floor(Math.random() * shapes.length)];
+        const size = Math.random() * 8 + 5;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 3;
+        const duration = Math.random() * 3 + 3;
+        const drift = (Math.random() - 0.5) * 200;
+
+        el.style.left = left + '%';
+        el.style.width = (shape === 'rect' ? size * 0.4 : size) + 'px';
+        el.style.height = (shape === 'rect' ? size * 1.2 : size) + 'px';
+        el.style.backgroundColor = color;
+        el.style.borderRadius = shape === 'circle' ? '50%' : '2px';
+        el.style.animationDelay = delay + 's';
+        el.style.animationDuration = duration + 's';
+        el.style.setProperty('--drift', drift + 'px');
+
+        container.appendChild(el);
+      }
+
+      setTimeout(function() { container.remove(); }, 7000);
+    })();
+  </script>
+</body>
+</html>
