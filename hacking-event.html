@@ -257,6 +257,50 @@
       margin-right: 0.7rem;
     }
 
+    .event-gallery {
+      background: rgba(255, 255, 255, 0.95);
+      color: #000;
+      padding: 2.5rem 3rem;
+      border-radius: 20px;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-gallery h2 {
+      font-size: 1.8rem;
+      color: #d32f2f;
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid #f0f0f0;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+    }
+
+    .details-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      background: linear-gradient(135deg, #d32f2f, #b71c1c);
+      color: #fff;
+      font-weight: 600;
+    }
+
     .back-button {
       display: inline-block;
       background: linear-gradient(135deg, #d32f2f, #b71c1c);
@@ -293,6 +337,10 @@
         grid-template-columns: 1fr;
       }
 
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
       .nav-menu {
         gap: 1rem;
       }
@@ -324,9 +372,9 @@
 
   <main class="main-content">
     <div class="event-hero">
-      <h1>Interactive Hacking Session</h1>
+      <h1>Interactive Ethical Hacking Session</h1>
       <p class="event-date">13 March, 2026</p>
-      <span class="event-badge">Ethical Hacking & Cybersecurity</span>
+      <span class="event-badge">Successfully Conducted</span>
     </div>
 
     <div class="event-container">
@@ -337,32 +385,35 @@
       <div class="event-details-section">
         <h2>Event Overview</h2>
         <p>
-          The Coding Club will host an Interactive Hacking Session, 
-          aimed at introducing students to the fundamentals of ethical hacking and cybersecurity practices. 
-          This hands-on session will provide participants with real-world exposure to security challenges 
-          and empower them with the knowledge to understand and prevent common vulnerabilities.
+          "You do not own a thing you cannot protect."
+        </p>
+        <p>
+          An interactive Ethical Hacking Session was conducted on 13 March 2026 to demonstrate common
+          cybersecurity vulnerabilities and spread awareness about secure system design. The session focused
+          on practical demonstrations of how weaknesses in web applications can be exploited if proper
+          security practices are not followed.
         </p>
 
         <div class="stats">
           <div class="stat-box">
-            <div class="stat-number">🎯</div>
-            <div class="stat-label">Hands-on Learning</div>
+            <div class="stat-number">Live</div>
+            <div class="stat-label">Practical Demonstrations</div>
           </div>
           <div class="stat-box">
-            <div class="stat-number">🔐</div>
-            <div class="stat-label">Real-World Scenarios</div>
+            <div class="stat-number">Secure</div>
+            <div class="stat-label">Design Awareness</div>
           </div>
         </div>
 
         <div class="highlights">
           <h3>Session Highlights</h3>
           <ul>
-            <li>Introduction to Ethical Hacking Fundamentals</li>
-            <li>Real-World Security Challenge Exposure</li>
-            <li>Understanding Common Vulnerabilities</li>
-            <li>Secure Coding Best Practices</li>
-            <li>Hands-on Practical Demonstrations</li>
-            <li>Cybersecurity Industry Insights</li>
+            <li>Hands-on demonstrations of common web vulnerabilities</li>
+            <li>Real examples of how insecure systems can be exploited</li>
+            <li>Discussion on secure coding and defensive design habits</li>
+            <li>Awareness session on ethics and responsible security testing</li>
+            <li>Interactive Q and A with practical security scenarios</li>
+            <li>Guidance for students interested in cybersecurity paths</li>
           </ul>
         </div>
       </div>
@@ -371,32 +422,42 @@
     <div class="learning-outcomes">
       <h2>What You'll Learn</h2>
       <ul>
-        <li>Fundamentals of ethical hacking and how it differs from malicious hacking</li>
-        <li>Common security vulnerabilities in modern applications and systems</li>
-        <li>Techniques used by security professionals to identify and fix security flaws</li>
-        <li>Best practices for writing secure code and preventing attacks</li>
-        <li>Real-world examples of cybersecurity breaches and how to prevent them</li>
-        <li>Career opportunities in the cybersecurity field</li>
-        <li>Hands-on practical exposure to security testing tools and methodologies</li>
+        <li>How attackers identify weak points in web applications</li>
+        <li>Why secure design and input validation are essential from day one</li>
+        <li>How ethical hacking differs from malicious behavior</li>
+        <li>Foundational defensive practices every developer should follow</li>
+        <li>How to think critically about system security during development</li>
+        <li>Career and learning pathways in cybersecurity</li>
       </ul>
+    </div>
+
+    <div class="event-gallery">
+      <h2>Event Gallery</h2>
+      <div class="gallery-grid">
+        <img src="./assests/image/hacking session/hacking_session_main_photo.png" alt="Hacking session main event photo">
+        <img src="./assests/image/hacking session/pic1.png" alt="Participants during hacking session">
+        <img src="./assests/image/hacking session/pic2.png" alt="Live demonstration during session">
+        <img src="./assests/image/hacking session/pic3.png" alt="Interactive ethical hacking discussion">
+      </div>
+      <a class="details-link" href="./assests/docs/hacking session details.pdf" target="_blank" rel="noopener noreferrer">
+        Open Minute-by-Minute Session Details
+      </a>
     </div>
 
     <div style="background: rgba(255, 255, 255, 0.95); color: #000; padding: 2.5rem 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
       <h2 style="font-size: 1.8rem; color: #d32f2f; margin-bottom: 1.5rem;">About This Session</h2>
       <p style="font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.8; color: #333;">
-        In today's digital world, cybersecurity has become more critical than ever. As software development becomes increasingly complex, 
-        understanding security vulnerabilities is not just an optional skill—it's a necessity. This Interactive Hacking Session is designed 
-        to bridge the gap between theoretical knowledge and practical application.
+        The session was designed to make cybersecurity practical and understandable for every student. Through live
+        examples and discussion, participants saw how quickly weak system design can be misused when secure practices
+        are ignored during development.
       </p>
       <p style="font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.8; color: #333;">
-        Participants will gain hands-on exposure to real-world security challenges, enabling them to understand common vulnerabilities 
-        and the importance of secure coding practices. Whether you're a beginner curious about cybersecurity or an aspiring developer 
-        looking to build secure applications, this session is designed for you.
+        The focus remained on ethical responsibility and prevention. Students explored common attack surfaces,
+        understood the logic behind exploit attempts, and learned how security-first thinking improves reliability
+        in real software projects.
       </p>
       <p style="font-size: 1.05rem; line-height: 1.8; color: #333;">
-        By the end of this session, you'll have a comprehensive understanding of cybersecurity fundamentals and practical skills to 
-        identify and prevent security vulnerabilities in your own projects. Join us as we explore the exciting and rewarding field of 
-        ethical hacking and cybersecurity!
+        Stay tuned with CodeSage for more coding, cybersecurity, and tech explorations.
       </p>
     </div>
   </main>
