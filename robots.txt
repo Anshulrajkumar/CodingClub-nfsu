@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /underdev.html
+
+Sitemap: https://codingclub-nfsu.vercel.app/sitemap.xml
