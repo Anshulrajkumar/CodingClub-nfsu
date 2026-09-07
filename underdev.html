@@ -6,13 +6,15 @@
   <link rel="icon" type="image/png" href="./assests/image/logo.png">
   <title>Under Development</title>
   <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./header.css">
   <style>
     body {
       margin: 0;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
       background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
       font-family: Arial, sans-serif;
       color: #fff;
@@ -20,24 +22,30 @@
     }
     body.paper-page {
       background-color: #eee7da;
-      background-image:
-        radial-gradient(rgba(96, 72, 45, 0.08) 0.7px, transparent 0.7px),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(214, 201, 181, 0.28));
-      background-size: 7px 7px, 100% 100%;
+      background-image: url("./assests/image/paper_texture.jpg");
+      background-repeat: repeat;
+      background-size: auto;
       background-attachment: fixed;
     }
     .container {
-      max-width: 600px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: min(600px, calc(100% - 2rem));
+      transform: translate(-50%, -50%);
       padding: 2rem;
+      box-sizing: border-box;
     }
     h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
-      color: #ff4444;
+      color: #7f1d1d;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.45);
     }
     p {
       font-size: 1.2rem;
-      color: #ccc;
+      color: #3f342b;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35);
     }
     .back-link {
       margin-top: 2rem;
@@ -56,6 +64,24 @@
   </style>
 </head>
 <body class="paper-page">
+  <section>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./assests/image/logo.png">
+      </div>
+      <ul class="nav-menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./events.html">Events</a></li>
+        <li><a href="./members.html">Members</a></li>
+        <li><a href="./underdev.html" class="active">FAQs</a></li>
+        <li><a href="./underdev.html">Join Us</a></li>
+        <li><a href="./underdev.html">Links</a></li>
+      </ul>
+    </div>
+  </nav>
+  </section>
+
   <div class="container">
     <h1>Under Development </h1>
     <p>This page is currently being built. Please check back later!</p>

@@ -1,14 +1,19 @@
 /* Shared header layout */
 body.paper-page {
   background-color: #eee7da;
-  background-image:
-    radial-gradient(rgba(96, 72, 45, 0.08) 0.7px, transparent 0.7px),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(214, 201, 181, 0.28));
-  background-size: 7px 7px, 100% 100%;
+  background-image: url("./assests/image/paper_texture.jpg");
+  background-repeat: repeat;
+  background-size: auto;
   background-attachment: fixed;
 }
 
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   height: 70px;
   padding: 5px 0;
   box-sizing: border-box;
@@ -16,11 +21,18 @@ body.paper-page {
 }
 
 .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 60px;
   box-sizing: border-box;
 }
 
 .logo {
+  display: flex;
   flex: 0 0 60px;
   width: 60px;
   height: 60px;
@@ -34,12 +46,27 @@ body.paper-page {
 }
 
 .nav-menu {
+  display: flex;
+  list-style: none;
   margin: 0;
   padding: 0;
+  gap: 2rem;
+  align-items: center;
 }
 
 .nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   line-height: 1.5;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ff0000;
 }
 
 @media (max-width: 768px) {
