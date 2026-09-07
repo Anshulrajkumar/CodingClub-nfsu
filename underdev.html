@@ -18,6 +18,14 @@
       color: #fff;
       text-align: center;
     }
+    body.paper-page {
+      background-color: #eee7da;
+      background-image:
+        radial-gradient(rgba(96, 72, 45, 0.08) 0.7px, transparent 0.7px),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(214, 201, 181, 0.28));
+      background-size: 7px 7px, 100% 100%;
+      background-attachment: fixed;
+    }
     .container {
       max-width: 600px;
       padding: 2rem;
@@ -47,7 +55,7 @@
     }
   </style>
 </head>
-<body>
+<body class="paper-page">
   <div class="container">
     <h1>Under Development </h1>
     <p>This page is currently being built. Please check back later!</p>
