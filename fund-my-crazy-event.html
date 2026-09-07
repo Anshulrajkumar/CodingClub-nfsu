@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fund My Crazy - Coding Club</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    #bgvideo {
+      opacity: 0.5;
+      position: fixed;
+      z-index: -1;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      width: 60px;
+      height: 60px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #4285F4;
+    }
+
+    .main-content {
+      margin-top: 80px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .event-hero {
+      background: linear-gradient(135deg, rgba(66, 133, 244, 0.95), rgba(156, 39, 176, 0.9));
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .event-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-hero .event-date {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+    }
+
+    .event-hero .event-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      margin-top: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .event-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 3rem;
+      color: #000;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      margin-bottom: 3rem;
+    }
+
+    .event-image-section img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .event-image-section img:hover {
+      transform: scale(1.05);
+    }
+
+    .event-details-section h2 {
+      font-size: 2.2rem;
+      color: #1a73e8;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .event-details-section p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .highlights {
+      background: #e8f0fe;
+      border-left: 5px solid #1a73e8;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .highlights h3 {
+      color: #1a73e8;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .highlights ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .highlights li {
+      padding: 0.7rem 0;
+      color: #333;
+      font-weight: 500;
+      border-bottom: 1px solid #c5d8f8;
+    }
+
+    .highlights li:last-child {
+      border-bottom: none;
+    }
+
+    .highlights li:before {
+      content: "✦ ";
+      color: #1a73e8;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-box {
+      background: linear-gradient(135deg, rgba(66, 133, 244, 0.18), rgba(156, 39, 176, 0.12));
+      border: 2px solid #1a73e8;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #1a73e8;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #555;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .learning-outcomes {
+      background: rgba(255, 255, 255, 0.95);
+      color: #000;
+      padding: 2.5rem 3rem;
+      border-radius: 20px;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .learning-outcomes h2 {
+      font-size: 1.8rem;
+      color: #1a73e8;
+      margin-bottom: 1.5rem;
+    }
+
+    .learning-outcomes ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .learning-outcomes li {
+      padding: 1rem 0;
+      font-size: 1.05rem;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+
+    .learning-outcomes li:last-child {
+      border-bottom: none;
+    }
+
+    .learning-outcomes li:before {
+      content: "→ ";
+      color: #1a73e8;
+      font-weight: bold;
+      margin-right: 0.7rem;
+    }
+
+    .event-gallery {
+      background: rgba(255, 255, 255, 0.95);
+      color: #000;
+      padding: 2.5rem 3rem;
+      border-radius: 20px;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-gallery h2 {
+      font-size: 1.8rem;
+      color: #1a73e8;
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #f0f0f0;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+    }
+
+    .ambassadors {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .ambassador-card {
+      background: #e8f0fe;
+      border: 2px solid #1a73e8;
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .ambassador-card strong {
+      display: block;
+      color: #1a73e8;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .ambassador-card span {
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .event-container {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+
+      .event-hero h1 {
+        font-size: 2rem;
+      }
+
+      .event-details-section h2 {
+        font-size: 1.7rem;
+      }
+
+      .stats,
+      .ambassadors,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid img {
+        height: auto;
+      }
+
+      .nav-menu {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <video autoplay loop muted playsinline id="bgvideo">
+      <source src="/assests/video/bg1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./assests/image/logo.png">
+      </div>
+      <ul class="nav-menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./events.html" class="active">Events</a></li>
+        <li><a href="./members.html">Members</a></li>
+        <li><a href="./underdev.html">FAQs</a></li>
+        <li><a href="./underdev.html">Join Us</a></li>
+        <li><a href="./underdev.html">Links</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="event-hero">
+      <h1>Fund My Crazy</h1>
+      <p class="event-date">4 September, 2026</p>
+      <span class="event-badge">Ideation &amp; Innovation Event</span>
+    </div>
+
+    <div class="event-container">
+      <div class="event-image-section">
+        <img src="./assests/image/Google Gemini/Front_Image.jpg" alt="Fund My Crazy group photo at NFSU Tripura Campus">
+      </div>
+
+      <div class="event-details-section">
+        <h2>Event Overview</h2>
+        <p>
+          On 4th September 2026, the Coding Club, NFSU Tripura Campus, in collaboration with Code Sage
+          and Google Student Ambassadors — Priyanshu Sahoo and Prasunma Das, successfully organized
+          Fund My Crazy, an exciting ideation and innovation-focused event.
+        </p>
+        <p>
+          The event witnessed an enthusiastic participation of 70 students, who came together to pitch
+          ideas, present innovative solutions, and engage with mentors on campus.
+        </p>
+
+        <div class="stats">
+          <div class="stat-box">
+            <div class="stat-number">70</div>
+            <div class="stat-label">Students Participated</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Google Student Ambassadors</div>
+          </div>
+        </div>
+
+        <div class="highlights">
+          <h3>Event Highlights</h3>
+          <ul>
+            <li>Ideation and innovation-focused format</li>
+            <li>Collaboration with Code Sage and #Team Gemini</li>
+            <li>Student pitches and on-stage presentations</li>
+            <li>Certificate presentations for participants</li>
+            <li>Guidance from Google Student Ambassadors</li>
+            <li>Campus-wide participation from NFSU Tripura</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="learning-outcomes">
+      <h2>Collaborators</h2>
+      <p style="font-size: 1.05rem; color: #333; margin-bottom: 0.5rem; line-height: 1.8;">
+        Fund My Crazy was organized by the Coding Club, NFSU Tripura Campus, together with Code Sage
+        and the Google Student Ambassador Program.
+      </p>
+      <div class="ambassadors">
+        <div class="ambassador-card">
+          <strong>Priyanshu Sahoo</strong>
+          <span>Google Student Ambassador — India</span>
+        </div>
+        <div class="ambassador-card">
+          <strong>Prasunma Das</strong>
+          <span>Google Student Ambassador — India</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-gallery">
+      <h2>Event Gallery</h2>
+      <div class="gallery-grid">
+        <img src="./assests/image/Google Gemini/Front_Image.jpg" alt="Participants of Fund My Crazy on stage">
+        <img src="./assests/image/Google Gemini/e3.jpg" alt="Student presenting during Fund My Crazy">
+        <img src="./assests/image/Google Gemini/e1.jpg" alt="Certificate presentation at Fund My Crazy">
+        <img src="./assests/image/Google Gemini/e2.jpg" alt="Award moment during Fund My Crazy">
+      </div>
+    </div>
+
+    <div style="background: rgba(255, 255, 255, 0.95); color: #000; padding: 2.5rem 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
+      <h2 style="font-size: 1.8rem; color: #1a73e8; margin-bottom: 1.5rem;">About This Event</h2>
+      <p style="font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.8; color: #333;">
+        Fund My Crazy gave students a stage to share bold ideas and turn them into structured pitches.
+        With 70 participants, the session mixed presentations, discussion, and recognition, keeping the
+        focus on creativity and practical innovation.
+      </p>
+      <p style="font-size: 1.05rem; line-height: 1.8; color: #333;">
+        The Coding Club thanks Code Sage and Google Student Ambassadors Priyanshu Sahoo and Prasunma Das
+        for partnering on this event, and every student who showed up to pitch, listen, and learn.
+      </p>
+    </div>
+  </main>
+</body>
+</html>

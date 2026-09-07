@@ -97,8 +97,9 @@ body {
 
 /* Event card */
 .event-card {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+  align-items: center;
   background: #e8edf5;
   color: #000;
   border-radius: 15px;
@@ -113,7 +114,7 @@ body {
 }
 
 .event-image {
-  flex: 1 1 40%;
+  grid-column: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,8 +128,12 @@ body {
 }
 
 .event-details {
-  flex: 1 1 60%;
+  grid-column: 2;
   padding: 2rem;
+}
+
+.event-card--text-only {
+  display: block;
 }
 
 .event-number {
@@ -170,7 +175,7 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .event-card {
-    flex-direction: column;
+    display: flex;
     text-align: center;
   }
 
